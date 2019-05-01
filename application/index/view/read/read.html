@@ -1,0 +1,123 @@
+{include file="../application/index/view/layouts/application.html" /}
+<br>
+<br>
+<br>
+<div class="text">
+		<a href="__INDEX__/index">&emsp;&emsp;&emsp;&emsp;&emsp;招聘会</a> &gt; <b>看帖</b>
+			</div>
+<div class="container" style="width: 800px;">
+<div id="bd" class="clearfix">
+		<div class="atl-location clearfix">
+			
+	
+		<div class="admin-view clearfix"><ul class="action-list clearfix"></ul></div></div>
+		<div id="post_head" class="atl-head">
+			<h1 class="atl-title">
+				<span class="s_title"> <span style="font-weight: 400;color:#FFFFFF;">{if condition="isset($postDetail)"}{$postDetail[0]['title']}{/if}</span>
+				</span> <span id="q_button_170_25_w"><div id="q_button_170_25"></div>
+				</span>
+			</h1>
+				<div class="atl-info">
+					<span>楼主：<a href="#" target="_blank" class="js-vip-check" uid="" uname="">{if condition="isset($postDetail)"}{$postDetail[0]['author']}{/if}</a>
+						</span> <span>时间：{if condition="isset($postDetail)"}{$postDetail[0]['date']}{/if}
+					</span> <span>点击： {if condition="isset($postDetail)"}{$postDetail[0]['click']}{/if}
+					</span> <span>回复：{if condition="isset($postDetail)"}{$postDetail[0]['commentnum']}{/if}
+					</span>
+				</div>
+
+		<div class="atl-main">
+			
+			<div class="atl-item" _host="">
+				<div class="atl-content">
+					<div class="atl-con-hd clearfix">
+						<div class="atl-con-hd-l"></div>
+						<div class="atl-con-hd-r"></div>
+					</div>
+					<div class="atl-con-bd clearfix">
+						<!-- 帖正文 begin-->
+						<div class="bbs-content clearfix" id="bbsContent">
+							　　{if condition="isset($postDetail)"}
+								{$postDetail[0]['content']}{/if}
+							
+						</div>
+						<!-- 帖正文 end-->
+					</div>
+				</div>
+			</div>
+			<!-- 回复列表,有人回复我的评论 begin -->
+			{if condition="isset($replyList)"}
+		{volist name="replyList" id="vo"}
+			<div class="atl-item" _host="" id="" replyid="" js_username="" js_restime="">
+				<div class="atl-head" id="">
+					<div class="atl-head-reply"></div>
+					<div class="atl-info">
+						 <span>作者
+								 ：<a href="#" target="_blank" class="js-vip-check" uid="" uname="">{$vo.author}</a>
+						</span> <span>时间：{$vo.date}</span>
+					</div>
+				</div>
+				<div class="atl-content">
+					<div class="atl-con-hd clearfix">
+						<div class="atl-con-hd-l"></div>
+						<div class="atl-con-hd-r"></div>
+					</div>
+					<div class="atl-con-bd clearfix">
+						<!-- 评论内容 begin -->
+						<div class="bbs-content">
+							　　{$vo.content}
+							
+						</div>
+						</div>
+						<!-- 评论内容 end -->
+	</div>
+</div>
+
+{/volist}
+{/if}
+		<!-- 我对该帖的回复框 begin -->
+		{if condition="isset($username)"}
+		<div class="post-div clearfix">
+			<a href="#" class="a-anchor" name="fabu_anchor"></a>
+			<div class="mb10">
+				<!--作者：<span id="author_name_reply"></span>-->
+				<span id="author_name_reply">{$username}</span>
+				<span style="color:#999;">发表回复</span>
+			</div>
+			<form action="__READ__/addAction" method="post">
+				<input hidden="" type="text" name="pid" value="{$postDetail[0]['id']}" >
+			<div id="bbsPost" style="position: relative;">
+				<div style="position: relative; width: 632px; height: 222px;">
+						<textarea name="content" id="textAreaContainer" class="textAreaContainer" bindcursor="true" style="width: 630px;"></textarea>
+					<div id="TY_ui_draft" class="TY-ui-draft clearfix" style="top: 0px; right: 0px; height: 200px;">
+						<div class="draft-box">
+							<div class="hd cf"></div>
+								<div class="bd"><ul class="draft-list"></ul></div>
+							<div class="help-box"></div>
+						</div>
+					</div>
+				</div>
+				
+				<input type="hidden" id="auth" name="auth" value="1">
+				<p class="post-p">
+					<input class="common-submitBtn inputbtn ty-bluebtn" type="submit" value="回复">
+				</p>
+				
+			</div>
+			</form>
+			<form action="__RESUME__/addResume" method="post">
+				<input hidden="" type="text" name="author" value="{$postDetail[0]['author']}" >
+			<div id="bbsPost" style="position: relative;">
+				
+				<input type="hidden" id="auth" name="auth" value="1">
+				<p class="post-p">
+					<input class="common-submitBtn inputbtn ty-bluebtn" type="submit" value="发表简历">
+				</p>
+				
+			</div>
+			</form>
+		</div>
+		{/if}
+<div>
+	{$replyList->render()}
+</div>
+</div>

@@ -1,0 +1,56 @@
+{include file="../application/index/view/layouts/application.html" /}
+<div class="container">
+	<style>
+	body
+	{
+	background-color:#FFFFFF;
+	}
+	.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	}
+	div.ex3
+	{
+	border:1px solid #000000;
+	width:400px;
+	height:450px;
+	background-color:#FFFFFF;
+	box-shadow: 10px 10px 5px #B0C4DE;
+	border-radius:10px;
+	}
+	div.ex4{margin: 18px 0px 0px 0px;}
+	</style>
+
+	<div class="center ex3">
+		<div class="ex4"><h4 style="text-align: center;">请输入注册信息</h4></div>
+		<hr width=200px>
+		<form role="form" action='__REGISTER__/registerAction' method='post' class="form-horizontal">
+			<div class="form-group">
+				<label for="firstname" class="col-lg-3 control-label">用户名</label>
+								<div class="col-lg-7">
+								<input type="text" class="form-control" id="firstname" placeholder="请输入用户名" name='username' />
+								</div>
+			</div>
+			<br>
+            <div class="form-group">
+				<label for="lastname" class="col-sm-3 control-label">密&emsp;码</label>
+					<div class="col-lg-7">
+						<input type="password" class="form-control" id="lastname" placeholder="请输入密码" name='passcode' />
+					</div>
+			</div>
+			<div style="text-align:center">
+				<select name="role">
+					<option value="用户">用户</option>
+					<option value="会员">会员</option>
+				</select>
+			</div>
+			<br>
+			<div class="col-sm-8">
+				<input style="height: 35px;width: 220px; margin:10px 10px 10px 90px; " type='submit' class="btn btn-primary btn-sm" value='立即注册' />
+			</div>		
+		</form>
+	</div>

@@ -1,0 +1,109 @@
+{include file="../application/index/view/layouts/application.html" /}
+<br>
+<br>
+<div id="bbsdoc" class="bbsdoc clearfix">
+	<div class="blmenu clearfix" style="margin: 20px;">
+		<h1 class="buluo_title"><a href="#" style="">简历一览</a>
+		</h1>
+		<div class="have_buluo">
+			<p>
+				
+			</p>
+		</div>
+	</div>
+</div>
+<!-- 部落列表导航栏 begin -->
+	<!-- <div class="bbs-type new-bbs-type col-md-10">
+		<div class="tab-list clearfix" style="margin: 0px 0px 0px 150px;">
+			<ul class="clearfix ">
+				<li class="curr"><a href="#">帖子</a></li>
+				<li class="clearfix fr">
+					<form class="fl" id="" action="" method="get">
+						<select class="select" name="">
+					    <option value="0" selected="selected">标题</option>
+					    <option value="1">作者</option>
+						</select>
+						<input name="" type="text" class="buluo_search_key" placeholder="请输入关键字" style="height: 26px" />
+		
+							<button id="buluo_search_submit_btn" type="submit" class="buluo_search_submit"><i></i></button>
+					</form>
+		<a href="#" class="reload fl" rel="nofollow">刷新</a>
+		<a href="__POST__/post" class="btn-post fatie section fl" rel="nofollow">发表帖子</a>
+				</li>
+			</ul>
+		</div>
+	</div> -->
+		<!-- 部落列表导航栏 end -->
+		
+		<!-- 帖列表 start -->
+<div class="mt5 group clearfix" style="">
+	<table class="col-md-10 tab-bbs-list tab-bbs-list-2" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin: 5px 100px 10px 100px;">
+	<colgroup>
+					<col class="col-title">
+
+					<col class="">
+
+					<col class="">
+
+					<col class="">
+
+					<col class="col-date">
+	</colgroup>
+	<thead style="width: 800px;">
+		<tr>
+			<th scope="col" class="w380">&emsp;发送人</th>
+			<!-- <th scope="col" class="w-author">作者</th> -->
+			<!-- <th scope="col" class="w-time">回复时间</th> -->
+		</tr>
+	</thead>
+	<tbody>
+		{if condition="isset($resumeList)"}
+		{volist name="resumeList" id="vo"}
+		<tr>
+			<td class="td-title faceblue">
+			<a target="_blank" href="__RESUME__/resumedetail?username={$vo.sender}" style="">{$vo.sender}</a>
+			</td>
+			<!-- <td>{$vo.recorder}<a class="author" title="" target="_blank" href="#"></a></td> -->
+			<!-- <td title="">{$vo.id}</td> -->
+		</tr>
+		{/volist}
+		{/if}
+				
+<!-- 	    <tr>
+			<td class="td-title faceblue">
+			<a target="_blank" href="#" style="">1</a>
+			</td>
+			<td><a class="author" title="" target="_blank" href="#"></a></td>
+			<td></td>
+			<td></td>
+			<td title=""></td>
+		</tr> -->
+		</tbody>
+	</table>
+</div>
+
+		<!-- 帖列表 end -->
+
+		
+		<div>
+			{$resumeList->render()}
+		</div>
+		<!-- 分页开始 -->
+
+		<!-- <div class="short-pages-group clearfix">
+			<div class="atl-pages" _maxpage="5">
+			<a href="#" class="">上页</a>
+			<strong>1</strong>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">下页</a>&nbsp;到<input name="" class="pagetxt" type="text">页&nbsp;<a class="gopage" bind="gopage" title="确定" href="#">确定</a></div>
+
+
+
+			
+
+		</div> -->
+
+		<!-- 分页结束 -->

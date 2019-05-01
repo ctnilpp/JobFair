@@ -1,0 +1,52 @@
+{include file="../application/index/view/layouts/application.html" /}
+<div class="container">
+<br>
+<br>
+<br>
+
+<div id="bd" class="layout-lm clearfix">
+            <!-- 发帖框 begin -->
+<div class="location clearfix">
+	<div class="text">
+		<a href="__INDEX__/index">招聘会</a> &gt; <b>发帖</b>
+	</div>
+</div>
+<div id="BBS_BLOCK">
+	<table class="fatieArea">
+		<colgroup>
+			<col class="titleItem">
+			<col class="item">
+		</colgroup>
+		<form action="__POST__/addPost" method="post">
+		<tbody>
+		<tr>
+			<td>标题：</td>
+			<td>
+				<input type="text" class="bbsTitle fl" name="title" maxlength="34" bindcursor="true" style="height: 30px; width: 729px;">
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">内容：</td>
+			<td id="textAreaWrap" style="position: relative;">
+				<input type="hidden" id="auth"  value="0">
+				<textarea name="content" id="textAreaContainer" class="textAreaContainer" bindcursor="true"></textarea>
+				<!-- 未知input的value值为何物，暂且放测试环境上面的值 -->
+				<input type="hidden" id="user_action" name="action" value="f0.1544447477757.0|10605027fee2b7addfa5f21489d69b04|d41d8cd98f00b204e9800998ecf8427e|Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36|v2.3.1">
+				<div class="ty_bbs_preview_area"></div>
+		</tr>
+		<tr>
+			<td><!--标签：--></td>
+			<td style="zoom:1;">
+				<!--<div  class="labelInput"></div>-->
+				<input type="submit" style="margin: 0px 20px 10px 0px;" class="common-submitBtn fr inputbtn ty-bluebtn" type="button" value="发表">
+			</td>
+		</tr>
+	</tbody>
+	</form>
+</table>
+</div>
+<script type="text/javascript"></script>
+            <!-- 发帖框 end -->
+        </div>
+    </div>
+</div>

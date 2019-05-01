@@ -1,0 +1,19 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" id="logo" href="__INDEX__/index">招聘会</a>
+	</div>
+	{if condition="isset($username)"}
+	<ul class="nav navbar-nav pull-right">
+	 	<li><a href="__MYSELF__/myself"><span class="glyphicon glyphicon-user"></span> {$username}</a></li>
+	 	<li><a href="__INDEX__/exitUser"><span class="glyphicon glyphicon-log-in"></span> 注销</a></li>
+	</ul>
+	{else /}
+	<ul class="nav navbar-nav pull-right">
+	 	<li><a href="__REGISTER__/register"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+      	<li><a href="__LOGIN__/login"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+	</ul>
+	{/if}
+	
+   </div>
+</header>

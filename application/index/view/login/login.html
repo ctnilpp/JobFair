@@ -1,0 +1,57 @@
+{include file="../application/index/view/layouts/application.html" /}
+<div class="container">
+	<style>
+	body
+	{
+	background-color:#FFFFFF;
+	}
+	.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	}
+	div.ex3
+	{
+	border:1px solid #000000;
+	width:350px;
+	height:400px;
+	background-color:#FFFFFF;
+	box-shadow: 10px 10px 5px #B0C4DE;
+	border-radius:10px;
+	}
+	div.ex4{margin: 18px 0px 0px 0px;}
+	</style>
+	<div class="center ex3">
+		<div class="ex4"><h4 style="text-align: center;">请输入登录信息</h4></div>
+		<hr width=220px>
+		<form role="form" action='__LOGIN__/loginAction' method='post' class="form-horizontal">
+			<div class="form-group">
+				<div class="col-lg-7">
+					<input style="margin: 10px 10px 10px 70px;width: 220px;height: 40px;" type="text" class="form-control" id="firstname" placeholder="手机号/邮箱/用户名" name='username' />
+				</div>
+			</div>
+            <div class="form-group">
+					<div class="col-lg-7">
+						<input style="margin: 10px 10px 10px 70px;width: 220px;height: 40px;" type="password" class="form-control" id="lastname" placeholder="密码" name='passcode' />
+					</div>
+			</div>
+			<div class="col-lg-7">
+				<input style="margin: 10px 10px 10px 55px;width: 220px;height: 40px;" type='submit' class="btn btn-primary btn-sm" value='立即登录' />
+			</div>
+			<div class="form-group">	
+				<div class="col-lg-6">
+					<label class="checkbox-inline" style="margin: 70px 0px 0px 40px;">
+					<input checked="checked" type="checkbox" id="inlineCheckbox1" value="option1">下次自动登录
+					</label>
+				</div>
+				<div class="col-lg-6" style="margin: 77px 0px 0px 0px;">
+					<a href="#">忘记密码？</a>|<a href="../php/register.php">注册新账号</a>
+				</div>
+			</div>
+		</form>
+		
+	</div>
+</div>

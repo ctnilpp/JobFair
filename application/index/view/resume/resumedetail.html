@@ -1,0 +1,139 @@
+{include file="../application/index/view/layouts/application.html" /}
+<br>
+<br>
+<br>
+<div class="text">
+		<a href="__RESUME__/resume">&emsp;&emsp;&emsp;&emsp;&emsp;简历一览</a> &gt; <b>看简历</b>
+			</div>
+<div class="container" style="width: 800px;">
+<div id="bd" class="clearfix">
+		<div class="atl-location clearfix">
+			
+	
+		<div class="admin-view clearfix"><ul class="action-list clearfix"></ul></div></div>
+		<div id="post_head" class="atl-head">
+			<h1 class="atl-title">
+				<span class="s_title"> <span style="font-weight: 400;color:#FFFFFF;">{if condition="isset($userInfo)"}{$userInfo[0]['username']}{/if}</span>
+				</span> <span id="q_button_170_25_w"><div id="q_button_170_25"></div>
+				</span>
+			</h1>
+			<!-- 	<div class="atl-info">
+					<span>楼主：<a href="#" target="_blank" class="js-vip-check" uid="" uname="">{if condition="isset($postDetail)"}{$postDetail[0]['author']}{/if}</a>
+						</span> <span>时间：{if condition="isset($postDetail)"}{$postDetail[0]['date']}{/if}
+					</span> <span>点击： {if condition="isset($postDetail)"}{$postDetail[0]['click']}{/if}
+					</span> <span>回复：{if condition="isset($postDetail)"}{$postDetail[0]['commentnum']}{/if}
+					</span>
+				</div> -->
+
+		<div class="atl-main">
+			
+			<div class="atl-item" _host="">
+				<div class="atl-content">
+					<div class="atl-con-hd clearfix">
+						<div class="atl-con-hd-l"></div>
+						<div class="atl-con-hd-r"></div>
+					</div>
+					<div class="atl-con-bd clearfix">
+						<!-- 帖正文 begin-->
+						<div class="bbs-content clearfix" id="bbsContent">
+							　　{if condition="isset($userInfo)"}{$userInfo[0]['personnal']}{/if}
+							
+						</div>
+						<!-- 帖正文 end-->
+					</div>
+				</div>
+			</div>
+			<!-- 回复列表,有人回复我的评论 begin -->
+		<!-- 	<div class="atl-item" _host="" id="" replyid="" js_username="" js_restime="">
+				<div class="atl-head" id="">
+					<div class="atl-head-reply"></div>
+					<div class="atl-info">
+						 <span>作者
+								 ：<a href="#" target="_blank" class="js-vip-check" uid="" uname=""></a>
+						</span> <span>时间：</span>
+					</div>
+				</div>
+				<div class="atl-content">
+					<div class="atl-con-hd clearfix">
+						<div class="atl-con-hd-l"></div>
+						<div class="atl-con-hd-r"></div>
+					</div>
+					<div class="atl-con-bd clearfix">
+				
+						<div class="bbs-content">
+							　
+							
+						</div>
+						</div>
+				
+	</div>
+</div>
+ -->
+		<!-- 我对该帖的回复框 begin -->
+		<!-- <div class="post-div clearfix">
+			<a href="#" class="a-anchor" name="fabu_anchor"></a>
+			<div class="mb10">
+
+				<span id="author_name_reply">sad</span>
+				<span style="color:#999;">发表回复</span>
+			</div>
+			<form action="__READ__/addAction" method="post">
+				<input hidden="" type="text" name="pid" value="" >
+			<div id="bbsPost" style="position: relative;">
+				<div style="position: relative; width: 632px; height: 222px;">
+						<textarea name="content" id="textAreaContainer" class="textAreaContainer" bindcursor="true" style="width: 630px;"></textarea>
+					<div id="TY_ui_draft" class="TY-ui-draft clearfix" style="top: 0px; right: 0px; height: 200px;">
+						<div class="draft-box">
+							<div class="hd cf"></div>
+								<div class="bd"><ul class="draft-list"></ul></div>
+							<div class="help-box"></div>
+						</div>
+					</div>
+				</div>
+				
+				<input type="hidden" id="auth" name="auth" value="1">
+				<p class="post-p">
+					<input class="common-submitBtn inputbtn ty-bluebtn" type="submit" value="回复">
+				</p>
+				
+			</div>
+			</form>
+			<form action="__RESUME__/addResume" method="post">
+				<input hidden="" type="text" name="author" value="" >
+			<div id="bbsPost" style="position: relative;">
+				
+				<input type="hidden" id="auth" name="auth" value="1">
+				<p class="post-p">
+					<input class="common-submitBtn inputbtn ty-bluebtn" type="submit" value="发表简历">
+				</p>
+				
+			</div>
+			</form>
+		</div> -->
+		{if condition="isset($resumeDetail)"}
+		{if condition="$resumeDetail[0]['pass']==0"}
+		<form action="__RESUME__/changePass" method="post">
+				<!-- <input hidden="" type="text" name="author" value="" > -->
+			<div id="bbsPost" style="position: relative;">
+				<input type="hidden" id="auth" name="sender" value="{$userInfo[0]['username']}">
+				<p class="post-p">
+					<input class="common-submitBtn inputbtn ty-bluebtn" type="submit" value="录取">
+				</p>
+				
+			</div>
+			</form>
+			{else } 
+			<form action="#" method="post">
+				<!-- <input hidden="" type="text" name="author" value="" > -->
+			<div id="bbsPost" style="position: relative;">
+				<input type="hidden" id="auth" name="sender" value="{$userInfo[0]['username']}">
+				<p class="post-p">
+					<input class="common-submitBtn inputbtn ty-bluebtn" type="submit" value="已录取">
+				</p>
+				
+			</div>
+			{/if}
+			{/if}
+<div>
+</div>
+</div>

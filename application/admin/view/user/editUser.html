@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>招聘会</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="__PUBLIC__/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="__PUBLIC__/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="__PUBLIC__/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="__PUBLIC__/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="__PUBLIC__/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript"></script>
+    <script type="text/javascript" src="js/model.js"></script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        {include file="../application/admin/view/layouts/head.html" /}
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">用户编辑</h1>
+                </div>
+            </div>
+            <div>
+            <i class="fa fa-search-plus fa-fw"></i> <input type="text" placeholder="搜索..." style="">
+            </div>
+             <div>
+               <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="boxId" onclick="selectALLNO();"/>全选</th>
+                            <th>用户ID</th>
+                            <th>用户名</th>
+                            <th>密码</th>
+                            <th style="width: 100px;">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {if condition="isset($userList)"}
+                         {volist name="userList" id="vo"}  
+                        <tr>
+                            <td><input type="checkbox" name="love"/></td>
+                            <td>{$vo.id} </td>
+                            <td>{$vo.username}</td>
+                            <td>{$vo.passcode}</td>
+                            <td>{$vo.role}</td>
+                            <td><button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal{$vo.id}"><i class="fa fa-pencil fa-fw"></i></button><a href="__EDIT_USER__/deleteAction?id={$vo.id}" class="button btn btn-default btn-xs"><i class="fa  fa-trash-o fa-fw"></i></button></a></td>
+                        </tr>
+                        {/volist}
+                        {/if}
+    
+                         <script type="text/javascript">
+        function selectALLNO() {
+            // 获取要操作的复选框
+            var box1=document.getElementById("boxId");
+            //checked判断是否选中
+            if(box1.checked==true)
+            {
+                selectAll();
+            }
+            else
+            {
+                SelectNO();
+            }
+        }
+        function selectAll() {
+            // 获取要操作的复选框
+            var box1=document.getElementsByName("love");
+            //checked判断是否选中
+            for(var x=0;x<box1.length;x++)
+            {
+                var value1=box1[x];
+                value1.checked=true;
+            }
+        }
+        function SelectNO(){
+            // 获取要操作的复选框
+            var box2 = document.getElementsByName("love");
+             //checked判断是否选中
+           for (var x = 0; x < box2.length; x++) {
+               var value1=box2[x];
+               value1.checked=false;
+            }
+        }
+        function selectOther() {
+            // 获取要操作的复选框
+            var box1=document.getElementsByName("love");
+            //checked判断是否选中
+            for(var x=0;x<box1.length;x++)
+            {
+                var value1=box1[x];
+               if(value1.checked)
+                   value1.checked=false;
+               else
+                   value1.checked=true;
+            }
+        }
+    </script>
+                    </tbody>
+                </table>
+              <!--分页-->  
+    <div>
+   {$userList->render()}
+    </div>
+    <!-- 模态框（Modal） -->
+     {if condition="isset($userList)"}
+                         {volist name="userList" id="vo"}  
+                                            <div class="modal fade" id="myModal{$vo.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  >
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                                &times;
+                                                            </button>
+                                                          
+                                                            <h4 class="modal-title" id="myModalLabel" style="text-align: center;">
+                                                                修改用户
+                                                            </h4>
+                                                        </div>
+                                                        <br>
+
+                                                        <form class="bs-example bs-example-form" role="form" action="__EDIT_USER__/editAction?id={$vo.id}">
+                                                            <style type="text/css">
+                                                                .center{
+                                                                    margin: auto;
+                                                                    width: 60%;
+                                                                    padding: 10px;
+                                                                }
+                                                            </style>
+                                                        <input hidden="" type="" name="id" value="{$vo.id}">
+                                                               <div class="input-group input-group-lg col-sm-8 center">
+                                                                <span class="input-group-addon">用户名</span>
+                                                                <input type="text" name="username" class="form-control" placeholder="请输入用户名" value="{$vo.username}">
+
+                                                            </div>   
+                                                            <div class="input-group input-group-lg col-sm-8 center">
+                                                                <span class="input-group-addon">密&emsp;码</span>
+                                                                <input type="text" name="passcode" class="form-control" placeholder="请输入密码 " value="{$vo.passcode}">
+                                                                <!-- <button type="button" id="submit" data-dismiss="modal" class="btn btn-primary">
+                                                                提交更改
+                                                            </button> -->
+
+                                                            </div>
+                                                            <div class="center" style="margin:10px 10px 10px 200px;">
+                                                            <input type="submit" class="btn btn-primary " name="" value="提交">&emsp;&emsp;
+                                                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                            </button>
+                                                        </div>
+                                                        </form>
+                                                        <div class="modal-footer">
+                                                           
+                                                            
+                                                        </div>
+
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal -->
+
+             </div>
+             {/volist}
+             {/if}
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="__PUBLIC__/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="__PUBLIC__/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="__PUBLIC__/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="__PUBLIC__/vendor/raphael/raphael.min.js"></script>
+    <script src="__PUBLIC__/vendor/morrisjs/morris.min.js"></script>
+    <script src="__PUBLIC__/data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="__PUBLIC__/dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
